@@ -29,7 +29,7 @@ public class Texture {
     }
     
     public class func makeTexture(pixelBuffer: CVPixelBuffer,
-                                  pixelFormat: MTLPixelFormat = .bgra8Unorm,
+                                  pixelFormat: MTLPixelFormat = .rgba8Unorm,
                                   width: Int? = nil,
                                   height: Int? = nil,
                                   plane: Int = 0) -> Texture? {
