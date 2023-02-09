@@ -1,0 +1,757 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5444E9262995137900B7DDE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E9252995137900B7DDE7 /* AppDelegate.swift */; };
+		5444E92F2995137A00B7DDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5444E92E2995137A00B7DDE7 /* Assets.xcassets */; };
+		5444E9322995137A00B7DDE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5444E9302995137A00B7DDE7 /* LaunchScreen.storyboard */; };
+		5444E93D2995137A00B7DDE7 /* newGPUImageDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E93C2995137A00B7DDE7 /* newGPUImageDemoTests.swift */; };
+		5444E9472995137A00B7DDE7 /* newGPUImageDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E9462995137A00B7DDE7 /* newGPUImageDemoUITests.swift */; };
+		5444E9492995137A00B7DDE7 /* newGPUImageDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E9482995137A00B7DDE7 /* newGPUImageDemoUITestsLaunchTests.swift */; };
+		5444E976299513B600B7DDE7 /* THBMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E95C299513B600B7DDE7 /* THBMainVC.swift */; };
+		5444E977299513B600B7DDE7 /* comics_22.png in Resources */ = {isa = PBXBuildFile; fileRef = 5444E95E299513B600B7DDE7 /* comics_22.png */; };
+		5444E978299513B600B7DDE7 /* GrayComputePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E962299513B600B7DDE7 /* GrayComputePipeline.swift */; };
+		5444E979299513B600B7DDE7 /* Gray.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5444E963299513B600B7DDE7 /* Gray.metal */; };
+		5444E97A299513B600B7DDE7 /* PassthroughRenderPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E964299513B600B7DDE7 /* PassthroughRenderPipeline.swift */; };
+		5444E97B299513B600B7DDE7 /* Passthrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5444E965299513B600B7DDE7 /* Passthrough.metal */; };
+		5444E97C299513B600B7DDE7 /* MetalRenderingDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E968299513B600B7DDE7 /* MetalRenderingDevice.swift */; };
+		5444E97D299513B600B7DDE7 /* ShaderUniformSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E969299513B600B7DDE7 /* ShaderUniformSettings.swift */; };
+		5444E97E299513B600B7DDE7 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E96C299513B600B7DDE7 /* Size.swift */; };
+		5444E97F299513B600B7DDE7 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E96D299513B600B7DDE7 /* Matrix.swift */; };
+		5444E980299513B600B7DDE7 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E96E299513B600B7DDE7 /* Position.swift */; };
+		5444E981299513B600B7DDE7 /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444E96F299513B600B7DDE7 /* AAPLMathUtilities.m */; };
+		5444E982299513B600B7DDE7 /* AAPLMathUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E970299513B600B7DDE7 /* AAPLMathUtil.swift */; };
+		5444E983299513B600B7DDE7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E971299513B600B7DDE7 /* Color.swift */; };
+		5444E984299513B600B7DDE7 /* PixelbufferUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E973299513B600B7DDE7 /* PixelbufferUtil.swift */; };
+		5444E985299513B600B7DDE7 /* TextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E974299513B600B7DDE7 /* TextureCache.swift */; };
+		5444E986299513B600B7DDE7 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E975299513B600B7DDE7 /* Texture.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5444E9392995137A00B7DDE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5444E91A2995137900B7DDE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5444E9212995137900B7DDE7;
+			remoteInfo = newGPUImageDemo;
+		};
+		5444E9432995137A00B7DDE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5444E91A2995137900B7DDE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5444E9212995137900B7DDE7;
+			remoteInfo = newGPUImageDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5444E9222995137900B7DDE7 /* newGPUImageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newGPUImageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5444E9252995137900B7DDE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5444E92E2995137A00B7DDE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5444E9312995137A00B7DDE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5444E9332995137A00B7DDE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5444E9382995137A00B7DDE7 /* newGPUImageDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newGPUImageDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5444E93C2995137A00B7DDE7 /* newGPUImageDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newGPUImageDemoTests.swift; sourceTree = "<group>"; };
+		5444E9422995137A00B7DDE7 /* newGPUImageDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newGPUImageDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5444E9462995137A00B7DDE7 /* newGPUImageDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newGPUImageDemoUITests.swift; sourceTree = "<group>"; };
+		5444E9482995137A00B7DDE7 /* newGPUImageDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newGPUImageDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5444E95C299513B600B7DDE7 /* THBMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THBMainVC.swift; sourceTree = "<group>"; };
+		5444E95E299513B600B7DDE7 /* comics_22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comics_22.png; sourceTree = "<group>"; };
+		5444E962299513B600B7DDE7 /* GrayComputePipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrayComputePipeline.swift; sourceTree = "<group>"; };
+		5444E963299513B600B7DDE7 /* Gray.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Gray.metal; sourceTree = "<group>"; };
+		5444E964299513B600B7DDE7 /* PassthroughRenderPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassthroughRenderPipeline.swift; sourceTree = "<group>"; };
+		5444E965299513B600B7DDE7 /* Passthrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Passthrough.metal; sourceTree = "<group>"; };
+		5444E966299513B600B7DDE7 /* RenderShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderShaderTypes.h; sourceTree = "<group>"; };
+		5444E968299513B600B7DDE7 /* MetalRenderingDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalRenderingDevice.swift; sourceTree = "<group>"; };
+		5444E969299513B600B7DDE7 /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaderUniformSettings.swift; sourceTree = "<group>"; };
+		5444E96B299513B600B7DDE7 /* AAPLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLMathUtilities.h; sourceTree = "<group>"; };
+		5444E96C299513B600B7DDE7 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		5444E96D299513B600B7DDE7 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		5444E96E299513B600B7DDE7 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		5444E96F299513B600B7DDE7 /* AAPLMathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLMathUtilities.m; sourceTree = "<group>"; };
+		5444E970299513B600B7DDE7 /* AAPLMathUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPLMathUtil.swift; sourceTree = "<group>"; };
+		5444E971299513B600B7DDE7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5444E973299513B600B7DDE7 /* PixelbufferUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelbufferUtil.swift; sourceTree = "<group>"; };
+		5444E974299513B600B7DDE7 /* TextureCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureCache.swift; sourceTree = "<group>"; };
+		5444E975299513B600B7DDE7 /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5444E91F2995137900B7DDE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5444E9352995137A00B7DDE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5444E93F2995137A00B7DDE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5444E9192995137900B7DDE7 = {
+			isa = PBXGroup;
+			children = (
+				5444E9242995137900B7DDE7 /* newGPUImageDemo */,
+				5444E93B2995137A00B7DDE7 /* newGPUImageDemoTests */,
+				5444E9452995137A00B7DDE7 /* newGPUImageDemoUITests */,
+				5444E9232995137900B7DDE7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5444E9232995137900B7DDE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5444E9222995137900B7DDE7 /* newGPUImageDemo.app */,
+				5444E9382995137A00B7DDE7 /* newGPUImageDemoTests.xctest */,
+				5444E9422995137A00B7DDE7 /* newGPUImageDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5444E9242995137900B7DDE7 /* newGPUImageDemo */ = {
+			isa = PBXGroup;
+			children = (
+				5444E98E2995147100B7DDE7 /* Supporting Files */,
+				5444E95D299513B600B7DDE7 /* Res */,
+				5444E95F299513B600B7DDE7 /* Thrid */,
+				5444E95B299513B600B7DDE7 /* View Controllers */,
+			);
+			path = newGPUImageDemo;
+			sourceTree = "<group>";
+		};
+		5444E93B2995137A00B7DDE7 /* newGPUImageDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				5444E93C2995137A00B7DDE7 /* newGPUImageDemoTests.swift */,
+			);
+			path = newGPUImageDemoTests;
+			sourceTree = "<group>";
+		};
+		5444E9452995137A00B7DDE7 /* newGPUImageDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5444E9462995137A00B7DDE7 /* newGPUImageDemoUITests.swift */,
+				5444E9482995137A00B7DDE7 /* newGPUImageDemoUITestsLaunchTests.swift */,
+			);
+			path = newGPUImageDemoUITests;
+			sourceTree = "<group>";
+		};
+		5444E95B299513B600B7DDE7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5444E95C299513B600B7DDE7 /* THBMainVC.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5444E95D299513B600B7DDE7 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				5444E95E299513B600B7DDE7 /* comics_22.png */,
+			);
+			path = Res;
+			sourceTree = "<group>";
+		};
+		5444E95F299513B600B7DDE7 /* Thrid */ = {
+			isa = PBXGroup;
+			children = (
+				5444E960299513B600B7DDE7 /* RenderKit */,
+			);
+			path = Thrid;
+			sourceTree = "<group>";
+		};
+		5444E960299513B600B7DDE7 /* RenderKit */ = {
+			isa = PBXGroup;
+			children = (
+				5444E961299513B600B7DDE7 /* Pipeline */,
+				5444E967299513B600B7DDE7 /* Context */,
+				5444E96A299513B600B7DDE7 /* Piecemeal */,
+				5444E972299513B600B7DDE7 /* Pixel */,
+			);
+			path = RenderKit;
+			sourceTree = "<group>";
+		};
+		5444E961299513B600B7DDE7 /* Pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				5444E9912995164000B7DDE7 /* Header */,
+				5444E987299513E300B7DDE7 /* ComputePiplline */,
+				5444E98F2995162C00B7DDE7 /* PassthroughPipline */,
+			);
+			path = Pipeline;
+			sourceTree = "<group>";
+		};
+		5444E967299513B600B7DDE7 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				5444E968299513B600B7DDE7 /* MetalRenderingDevice.swift */,
+				5444E969299513B600B7DDE7 /* ShaderUniformSettings.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		5444E96A299513B600B7DDE7 /* Piecemeal */ = {
+			isa = PBXGroup;
+			children = (
+				5444E970299513B600B7DDE7 /* AAPLMathUtil.swift */,
+				5444E96B299513B600B7DDE7 /* AAPLMathUtilities.h */,
+				5444E96F299513B600B7DDE7 /* AAPLMathUtilities.m */,
+				5444E971299513B600B7DDE7 /* Color.swift */,
+				5444E96D299513B600B7DDE7 /* Matrix.swift */,
+				5444E96E299513B600B7DDE7 /* Position.swift */,
+				5444E96C299513B600B7DDE7 /* Size.swift */,
+			);
+			path = Piecemeal;
+			sourceTree = "<group>";
+		};
+		5444E972299513B600B7DDE7 /* Pixel */ = {
+			isa = PBXGroup;
+			children = (
+				5444E973299513B600B7DDE7 /* PixelbufferUtil.swift */,
+				5444E974299513B600B7DDE7 /* TextureCache.swift */,
+				5444E975299513B600B7DDE7 /* Texture.swift */,
+			);
+			path = Pixel;
+			sourceTree = "<group>";
+		};
+		5444E987299513E300B7DDE7 /* ComputePiplline */ = {
+			isa = PBXGroup;
+			children = (
+				5444E963299513B600B7DDE7 /* Gray.metal */,
+				5444E962299513B600B7DDE7 /* GrayComputePipeline.swift */,
+			);
+			name = ComputePiplline;
+			sourceTree = "<group>";
+		};
+		5444E98E2995147100B7DDE7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5444E9252995137900B7DDE7 /* AppDelegate.swift */,
+				5444E92E2995137A00B7DDE7 /* Assets.xcassets */,
+				5444E9302995137A00B7DDE7 /* LaunchScreen.storyboard */,
+				5444E9332995137A00B7DDE7 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5444E98F2995162C00B7DDE7 /* PassthroughPipline */ = {
+			isa = PBXGroup;
+			children = (
+				5444E965299513B600B7DDE7 /* Passthrough.metal */,
+				5444E964299513B600B7DDE7 /* PassthroughRenderPipeline.swift */,
+			);
+			name = PassthroughPipline;
+			sourceTree = "<group>";
+		};
+		5444E9912995164000B7DDE7 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				5444E966299513B600B7DDE7 /* RenderShaderTypes.h */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5444E9212995137900B7DDE7 /* newGPUImageDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5444E94C2995137A00B7DDE7 /* Build configuration list for PBXNativeTarget "newGPUImageDemo" */;
+			buildPhases = (
+				5444E91E2995137900B7DDE7 /* Sources */,
+				5444E91F2995137900B7DDE7 /* Frameworks */,
+				5444E9202995137900B7DDE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = newGPUImageDemo;
+			productName = newGPUImageDemo;
+			productReference = 5444E9222995137900B7DDE7 /* newGPUImageDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5444E9372995137A00B7DDE7 /* newGPUImageDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5444E94F2995137A00B7DDE7 /* Build configuration list for PBXNativeTarget "newGPUImageDemoTests" */;
+			buildPhases = (
+				5444E9342995137A00B7DDE7 /* Sources */,
+				5444E9352995137A00B7DDE7 /* Frameworks */,
+				5444E9362995137A00B7DDE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5444E93A2995137A00B7DDE7 /* PBXTargetDependency */,
+			);
+			name = newGPUImageDemoTests;
+			productName = newGPUImageDemoTests;
+			productReference = 5444E9382995137A00B7DDE7 /* newGPUImageDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5444E9412995137A00B7DDE7 /* newGPUImageDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5444E9522995137A00B7DDE7 /* Build configuration list for PBXNativeTarget "newGPUImageDemoUITests" */;
+			buildPhases = (
+				5444E93E2995137A00B7DDE7 /* Sources */,
+				5444E93F2995137A00B7DDE7 /* Frameworks */,
+				5444E9402995137A00B7DDE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5444E9442995137A00B7DDE7 /* PBXTargetDependency */,
+			);
+			name = newGPUImageDemoUITests;
+			productName = newGPUImageDemoUITests;
+			productReference = 5444E9422995137A00B7DDE7 /* newGPUImageDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5444E91A2995137900B7DDE7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					5444E9212995137900B7DDE7 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					5444E9372995137A00B7DDE7 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 5444E9212995137900B7DDE7;
+					};
+					5444E9412995137A00B7DDE7 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 5444E9212995137900B7DDE7;
+					};
+				};
+			};
+			buildConfigurationList = 5444E91D2995137900B7DDE7 /* Build configuration list for PBXProject "newGPUImageDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5444E9192995137900B7DDE7;
+			productRefGroup = 5444E9232995137900B7DDE7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5444E9212995137900B7DDE7 /* newGPUImageDemo */,
+				5444E9372995137A00B7DDE7 /* newGPUImageDemoTests */,
+				5444E9412995137A00B7DDE7 /* newGPUImageDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5444E9202995137900B7DDE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5444E9322995137A00B7DDE7 /* LaunchScreen.storyboard in Resources */,
+				5444E977299513B600B7DDE7 /* comics_22.png in Resources */,
+				5444E92F2995137A00B7DDE7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5444E9362995137A00B7DDE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5444E9402995137A00B7DDE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5444E91E2995137900B7DDE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5444E97E299513B600B7DDE7 /* Size.swift in Sources */,
+				5444E986299513B600B7DDE7 /* Texture.swift in Sources */,
+				5444E97C299513B600B7DDE7 /* MetalRenderingDevice.swift in Sources */,
+				5444E97D299513B600B7DDE7 /* ShaderUniformSettings.swift in Sources */,
+				5444E9262995137900B7DDE7 /* AppDelegate.swift in Sources */,
+				5444E984299513B600B7DDE7 /* PixelbufferUtil.swift in Sources */,
+				5444E983299513B600B7DDE7 /* Color.swift in Sources */,
+				5444E982299513B600B7DDE7 /* AAPLMathUtil.swift in Sources */,
+				5444E97B299513B600B7DDE7 /* Passthrough.metal in Sources */,
+				5444E976299513B600B7DDE7 /* THBMainVC.swift in Sources */,
+				5444E980299513B600B7DDE7 /* Position.swift in Sources */,
+				5444E97F299513B600B7DDE7 /* Matrix.swift in Sources */,
+				5444E981299513B600B7DDE7 /* AAPLMathUtilities.m in Sources */,
+				5444E97A299513B600B7DDE7 /* PassthroughRenderPipeline.swift in Sources */,
+				5444E979299513B600B7DDE7 /* Gray.metal in Sources */,
+				5444E985299513B600B7DDE7 /* TextureCache.swift in Sources */,
+				5444E978299513B600B7DDE7 /* GrayComputePipeline.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5444E9342995137A00B7DDE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5444E93D2995137A00B7DDE7 /* newGPUImageDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5444E93E2995137A00B7DDE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5444E9472995137A00B7DDE7 /* newGPUImageDemoUITests.swift in Sources */,
+				5444E9492995137A00B7DDE7 /* newGPUImageDemoUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5444E93A2995137A00B7DDE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5444E9212995137900B7DDE7 /* newGPUImageDemo */;
+			targetProxy = 5444E9392995137A00B7DDE7 /* PBXContainerItemProxy */;
+		};
+		5444E9442995137A00B7DDE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5444E9212995137900B7DDE7 /* newGPUImageDemo */;
+			targetProxy = 5444E9432995137A00B7DDE7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5444E9302995137A00B7DDE7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5444E9312995137A00B7DDE7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5444E94A2995137A00B7DDE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5444E94B2995137A00B7DDE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5444E94D2995137A00B7DDE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D345JDMWWU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "newGPUImageDemo/Supporting Files/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.test.tanghongbo.newGPUImageDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5444E94E2995137A00B7DDE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D345JDMWWU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "newGPUImageDemo/Supporting Files/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.test.tanghongbo.newGPUImageDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5444E9502995137A00B7DDE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D345JDMWWU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.test.tanghongbo.newGPUImageDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/newGPUImageDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/newGPUImageDemo";
+			};
+			name = Debug;
+		};
+		5444E9512995137A00B7DDE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D345JDMWWU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.test.tanghongbo.newGPUImageDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/newGPUImageDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/newGPUImageDemo";
+			};
+			name = Release;
+		};
+		5444E9532995137A00B7DDE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D345JDMWWU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.test.tanghongbo.newGPUImageDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = newGPUImageDemo;
+			};
+			name = Debug;
+		};
+		5444E9542995137A00B7DDE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D345JDMWWU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.test.tanghongbo.newGPUImageDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = newGPUImageDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5444E91D2995137900B7DDE7 /* Build configuration list for PBXProject "newGPUImageDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5444E94A2995137A00B7DDE7 /* Debug */,
+				5444E94B2995137A00B7DDE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5444E94C2995137A00B7DDE7 /* Build configuration list for PBXNativeTarget "newGPUImageDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5444E94D2995137A00B7DDE7 /* Debug */,
+				5444E94E2995137A00B7DDE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5444E94F2995137A00B7DDE7 /* Build configuration list for PBXNativeTarget "newGPUImageDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5444E9502995137A00B7DDE7 /* Debug */,
+				5444E9512995137A00B7DDE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5444E9522995137A00B7DDE7 /* Build configuration list for PBXNativeTarget "newGPUImageDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5444E9532995137A00B7DDE7 /* Debug */,
+				5444E9542995137A00B7DDE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5444E91A2995137900B7DDE7 /* Project object */;
+}
