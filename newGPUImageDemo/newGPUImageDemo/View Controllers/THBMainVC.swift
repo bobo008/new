@@ -8,6 +8,12 @@
 import UIKit
 import MetalKit
 
+struct ZoomBlurUniform2 {
+    var size: Float
+    var center: float2
+}
+
+
 class THBMainVC: UIViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -26,6 +32,7 @@ class THBMainVC: UIViewController {
         view.backgroundColor = .red
         self.view.addSubview(view)
         
+        var a = MemoryLayout<ZoomBlurUniform2>.stride
         self.render()
     }
     
@@ -50,6 +57,10 @@ class THBMainVC: UIViewController {
         
         let pixel = PixelbufferUtil.pixelBuffer(width: 1000, height: 1000)!
         let dsttexture = Texture.makeTexture(pixelBuffer: pixel)?.texture
+        
+        
+        let pixel2 = PixelbufferUtil.pixelBuffer(width: 1000, height: 1000)!
+        let dsttexture2 = Texture.makeTexture(pixelBuffer: pixel2)?.texture
 
         
         let commandbuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer()!
@@ -59,15 +70,22 @@ class THBMainVC: UIViewController {
         pipeline.output = dsttexture
         pipeline.render(with: commandbuffer)
         
-        let pass = PassthroughRenderPipeline()
-        pass.input = texture
-        pass.output = dsttexture
-        pass.render(commandBuffer: commandbuffer)
+//        let pass = PassthroughRenderPipeline()
+//        pass.input = texture
+//        pass.output = dsttexture
+//        pass.render(commandBuffer: commandbuffer)
+        
+        
+        let pass2 = ZoomBlurRenderPipeline()
+        pass2.input = texture
+        pass2.output = dsttexture2
+        pass2.render(commandBuffer: commandbuffer)
+        
         
         commandbuffer.commit()
         
-        
-        let image2 = PixelbufferUtil.image(from: dsttexture!)
+        let image1 = PixelbufferUtil.image(from: dsttexture!)
+        let image2 = PixelbufferUtil.image(from: dsttexture2!)
 
         let a = 0;
     }

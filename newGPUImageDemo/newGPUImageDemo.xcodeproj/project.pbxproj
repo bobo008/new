@@ -30,6 +30,11 @@
 		5444E984299513B600B7DDE7 /* PixelbufferUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E973299513B600B7DDE7 /* PixelbufferUtil.swift */; };
 		5444E985299513B600B7DDE7 /* TextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E974299513B600B7DDE7 /* TextureCache.swift */; };
 		5444E986299513B600B7DDE7 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E975299513B600B7DDE7 /* Texture.swift */; };
+		5444E99429951B1D00B7DDE7 /* NormalBlendRenderPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E99329951B1D00B7DDE7 /* NormalBlendRenderPipeline.swift */; };
+		5444E99629951BAD00B7DDE7 /* NormalBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5444E99529951BAD00B7DDE7 /* NormalBlend.metal */; };
+		5444E99929951C6000B7DDE7 /* CommonVertex.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5444E99829951C6000B7DDE7 /* CommonVertex.metal */; };
+		5444E99C299520FB00B7DDE7 /* ZoomBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5444E99A299520FB00B7DDE7 /* ZoomBlur.metal */; };
+		5444E99D299520FB00B7DDE7 /* ZoomBlurRenderPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E99B299520FB00B7DDE7 /* ZoomBlurRenderPipeline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +84,11 @@
 		5444E973299513B600B7DDE7 /* PixelbufferUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelbufferUtil.swift; sourceTree = "<group>"; };
 		5444E974299513B600B7DDE7 /* TextureCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureCache.swift; sourceTree = "<group>"; };
 		5444E975299513B600B7DDE7 /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
+		5444E99329951B1D00B7DDE7 /* NormalBlendRenderPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBlendRenderPipeline.swift; sourceTree = "<group>"; };
+		5444E99529951BAD00B7DDE7 /* NormalBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = NormalBlend.metal; sourceTree = "<group>"; };
+		5444E99829951C6000B7DDE7 /* CommonVertex.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = CommonVertex.metal; sourceTree = "<group>"; };
+		5444E99A299520FB00B7DDE7 /* ZoomBlur.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ZoomBlur.metal; sourceTree = "<group>"; };
+		5444E99B299520FB00B7DDE7 /* ZoomBlurRenderPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomBlurRenderPipeline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +205,8 @@
 				5444E9912995164000B7DDE7 /* Header */,
 				5444E987299513E300B7DDE7 /* ComputePiplline */,
 				5444E98F2995162C00B7DDE7 /* PassthroughPipline */,
+				5444E99E299520FF00B7DDE7 /* ZoomBlur */,
+				5444E99729951BD500B7DDE7 /* NormalBlend */,
 			);
 			path = Pipeline;
 			sourceTree = "<group>";
@@ -264,9 +276,28 @@
 		5444E9912995164000B7DDE7 /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				5444E99829951C6000B7DDE7 /* CommonVertex.metal */,
 				5444E966299513B600B7DDE7 /* RenderShaderTypes.h */,
 			);
 			name = Header;
+			sourceTree = "<group>";
+		};
+		5444E99729951BD500B7DDE7 /* NormalBlend */ = {
+			isa = PBXGroup;
+			children = (
+				5444E99529951BAD00B7DDE7 /* NormalBlend.metal */,
+				5444E99329951B1D00B7DDE7 /* NormalBlendRenderPipeline.swift */,
+			);
+			name = NormalBlend;
+			sourceTree = "<group>";
+		};
+		5444E99E299520FF00B7DDE7 /* ZoomBlur */ = {
+			isa = PBXGroup;
+			children = (
+				5444E99A299520FB00B7DDE7 /* ZoomBlur.metal */,
+				5444E99B299520FB00B7DDE7 /* ZoomBlurRenderPipeline.swift */,
+			);
+			name = ZoomBlur;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,8 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5444E97E299513B600B7DDE7 /* Size.swift in Sources */,
+				5444E99629951BAD00B7DDE7 /* NormalBlend.metal in Sources */,
 				5444E986299513B600B7DDE7 /* Texture.swift in Sources */,
+				5444E99C299520FB00B7DDE7 /* ZoomBlur.metal in Sources */,
 				5444E97C299513B600B7DDE7 /* MetalRenderingDevice.swift in Sources */,
+				5444E99D299520FB00B7DDE7 /* ZoomBlurRenderPipeline.swift in Sources */,
 				5444E97D299513B600B7DDE7 /* ShaderUniformSettings.swift in Sources */,
 				5444E9262995137900B7DDE7 /* AppDelegate.swift in Sources */,
 				5444E984299513B600B7DDE7 /* PixelbufferUtil.swift in Sources */,
@@ -410,6 +444,8 @@
 				5444E982299513B600B7DDE7 /* AAPLMathUtil.swift in Sources */,
 				5444E97B299513B600B7DDE7 /* Passthrough.metal in Sources */,
 				5444E976299513B600B7DDE7 /* THBMainVC.swift in Sources */,
+				5444E99429951B1D00B7DDE7 /* NormalBlendRenderPipeline.swift in Sources */,
+				5444E99929951C6000B7DDE7 /* CommonVertex.metal in Sources */,
 				5444E980299513B600B7DDE7 /* Position.swift in Sources */,
 				5444E97F299513B600B7DDE7 /* Matrix.swift in Sources */,
 				5444E981299513B600B7DDE7 /* AAPLMathUtilities.m in Sources */,
