@@ -41,21 +41,4 @@ final class GrayComputePipeline {
         
         computeEncoder.endEncoding()
     }
-    
-    
-    func obtainThreadgroup(computePipelineState: MTLComputePipelineState, width: Int, height: Int) -> (MTLSize, MTLSize)? {
-        var size = 32
-        while size * size > computePipelineState.maxTotalThreadsPerThreadgroup {
-            size /= 2
-        }
-        if size == 0 {
-            assertionFailure()
-            return nil
-        }
-        let threadgroupSize = MTLSize.init(width: size, height: size, depth: 1)
-        // 加 size - 1 起到ceil的效果
-        let threadgroupCount = MTLSize.init(width: (width + size - 1) / size, height: (height + size - 1) / size, depth: 1)
-        
-        return (threadgroupSize, threadgroupCount)
-    }
 }

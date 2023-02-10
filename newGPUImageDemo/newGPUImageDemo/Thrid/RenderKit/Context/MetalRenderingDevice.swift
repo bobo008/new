@@ -10,6 +10,11 @@ public let vertexBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: st
 public let textureBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: standardImageTextureCoordinates, length: standardImageTextureCoordinates.count * MemoryLayout<Float>.size, options: [])!
 
 
+
+
+
+
+
 public class MetalRenderingDevice {
     public let device: MTLDevice
     public let commandQueue: MTLCommandQueue
@@ -39,7 +44,7 @@ public class MetalRenderingDevice {
     
     
     
-    func generateComputePipelineState(kernelFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.rgba8Unorm) -> (MTLComputePipelineState, [String:(Int, MTLStructMember)], Int) {
+    func generateComputePipelineState(kernelFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.bgra8Unorm) -> (MTLComputePipelineState, [String:(Int, MTLStructMember)], Int) {
         guard let kernelFunction = self.shaderLibrary.makeFunction(name: kernelFunctionName) else {
             fatalError("\(operationName): could not compile kernel function \(kernelFunctionName)")
         }
@@ -77,7 +82,7 @@ public class MetalRenderingDevice {
         
     }
     
-    func generateRenderPipelineState(vertexFunctionName:String, fragmentFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.rgba8Unorm) -> (MTLRenderPipelineState, [String:(Int, MTLStructMember)], Int) {
+    func generateRenderPipelineState(vertexFunctionName:String, fragmentFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.bgra8Unorm) -> (MTLRenderPipelineState, [String:(Int, MTLStructMember)], Int) {
         guard let vertexFunction = self.shaderLibrary.makeFunction(name: vertexFunctionName) else {
             fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
         }
@@ -120,4 +125,31 @@ public class MetalRenderingDevice {
             }
         }
     }
+}
+
+
+// 一些公共的方法可以放在这边，合理一些
+public func obtainRenderPassDescriptor(output: MTLTexture) -> MTLRenderPassDescriptor {
+    let renderPass = MTLRenderPassDescriptor()
+    renderPass.colorAttachments[0].texture = output
+    renderPass.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 0)
+    renderPass.colorAttachments[0].storeAction = .store
+    renderPass.colorAttachments[0].loadAction = .clear
+    return renderPass
+}
+
+public func obtainThreadgroup(computePipelineState: MTLComputePipelineState, width: Int, height: Int) -> (MTLSize, MTLSize)? {
+    var size = 32
+    while size * size > computePipelineState.maxTotalThreadsPerThreadgroup {
+        size /= 2
+    }
+    if size == 0 {
+        assertionFailure()
+        return nil
+    }
+    let threadgroupSize = MTLSize.init(width: size, height: size, depth: 1)
+    // 加 size - 1 起到ceil的效果
+    let threadgroupCount = MTLSize.init(width: (width + size - 1) / size, height: (height + size - 1) / size, depth: 1)
+    
+    return (threadgroupSize, threadgroupCount)
 }

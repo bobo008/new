@@ -28,4 +28,8 @@ constexpr sampler nearestSampler (s_address::mirrored_repeat, t_address::mirrore
 constexpr sampler linearSampler (s_address::mirrored_repeat, t_address::mirrored_repeat, mag_filter::linear, min_filter::linear);
 constexpr sampler nearestLinearSampler (s_address::mirrored_repeat, t_address::mirrored_repeat, mag_filter::nearest, min_filter::linear);
 
+
+
+
+
 #endif

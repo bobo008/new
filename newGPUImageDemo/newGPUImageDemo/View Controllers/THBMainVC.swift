@@ -40,8 +40,11 @@ class THBMainVC: UIViewController {
     
     func render() {
         let textureLoader = MTKTextureLoader(device: sharedMetalRenderingDevice.device)
-        guard let path = Bundle.main.path(forResource: "WID-small.jpg", ofType: nil) else { return  }
+        guard let path = Bundle.main.path(forResource: "comics_22.png", ofType: nil) else { return  }
         let image = UIImage(contentsOfFile: path)
+        // 可以通过这里指定纹理的坐标是左下为原点，否则一般是左上为原点
+//        let textureLoaderOptions: [MTKTextureLoader.Option: Any] =
+//          [.origin: MTKTextureLoader.Origin.bottomLeft]
         let texture = try! textureLoader.newTexture(cgImage:image!.cgImage!, options: [MTKTextureLoader.Option.SRGB : false])
         
 //        let texDescriptor = MTLTextureDescriptor()
@@ -49,7 +52,7 @@ class THBMainVC: UIViewController {
 //        texDescriptor.width = 1000
 //        texDescriptor.height = 1000
 //        texDescriptor.sampleCount = 1
-//        texDescriptor.pixelFormat = .rgba8Unorm
+//        texDescriptor.pixelFormat = .bgra8Unorm
 //        texDescriptor.storageMode = .shared
 //        texDescriptor.usage = .renderTarget.union(.shaderWrite)
 //
@@ -61,12 +64,14 @@ class THBMainVC: UIViewController {
         
         let pixel2 = PixelbufferUtil.pixelBuffer(width: 1000, height: 1000)!
         let dsttexture2 = Texture.makeTexture(pixelBuffer: pixel2)?.texture
-
+        
+        let pixel3 = PixelbufferUtil.pixelBuffer(image: image!)!
+        let dsttexture3 = Texture.makeTexture(pixelBuffer: pixel3)?.texture
         
         let commandbuffer = sharedMetalRenderingDevice.commandQueue.makeCommandBuffer()!
         
         let pipeline = GrayComputePipeline.init()
-        pipeline.input = texture
+        pipeline.input = dsttexture3
         pipeline.output = dsttexture
         pipeline.render(with: commandbuffer)
         
@@ -76,7 +81,7 @@ class THBMainVC: UIViewController {
 //        pass.render(commandBuffer: commandbuffer)
         
         
-        let pass2 = VignetteRenderPipeline()
+        let pass2 = PassthroughRenderPipeline()
         pass2.input = texture
         pass2.output = dsttexture2
         pass2.render(commandBuffer: commandbuffer)
@@ -86,7 +91,7 @@ class THBMainVC: UIViewController {
         
         let image1 = PixelbufferUtil.image(from: dsttexture!)
         let image2 = PixelbufferUtil.image(from: dsttexture2!)
-
+        let image3 = PixelbufferUtil.image(from: dsttexture3!)
         let a = 0;
     }
 

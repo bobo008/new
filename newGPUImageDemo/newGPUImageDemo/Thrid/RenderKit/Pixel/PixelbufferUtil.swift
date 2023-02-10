@@ -40,7 +40,7 @@ class PixelbufferUtil {
         return pixelBuffer(cgImage: cgImage, type: kCVPixelFormatType_32BGRA)
     }
     
-    static func pixelBuffer(cgImage: CGImage, type: OSType) -> CVPixelBuffer? {
+    static func pixelBuffer2(cgImage: CGImage, type: OSType) -> CVPixelBuffer? {
         var pxbuffer: CVPixelBuffer? = nil
         let options: [String: Any] = [kCVPixelBufferCGImageCompatibilityKey as String: true,
                                       kCVPixelBufferCGBitmapContextCompatibilityKey as String: true,
@@ -54,8 +54,38 @@ class PixelbufferUtil {
         let dataFromImageDataProvider = CFDataCreateMutableCopy(kCFAllocatorDefault, 0, cgImage.dataProvider!.data)
         
         
-        CVPixelBufferCreateWithBytes(kCFAllocatorDefault, width, height, kCVPixelFormatType_32ARGB, CFDataGetMutableBytePtr(dataFromImageDataProvider), bytesPerRow, nil, nil, options as CFDictionary, &pxbuffer)
+        CVPixelBufferCreateWithBytes(kCFAllocatorDefault, width, height, type, CFDataGetMutableBytePtr(dataFromImageDataProvider), bytesPerRow, nil, nil, options as CFDictionary, &pxbuffer)
         return pxbuffer!;
+    }
+ 
+
+    static func pixelBuffer(cgImage: CGImage, type: OSType) -> CVPixelBuffer? {
+        var pixelBuffer: CVPixelBuffer?
+        
+        let width =  cgImage.width
+        let height = cgImage.height
+        let attrs: [String: Any] = [kCVPixelBufferCGImageCompatibilityKey as String: true,
+                                    kCVPixelBufferCGBitmapContextCompatibilityKey as String: true,
+                                    kCVPixelBufferIOSurfacePropertiesKey as String: [:]]
+        
+        let status = CVPixelBufferCreate(kCFAllocatorDefault, width, height, type, attrs as CFDictionary, &pixelBuffer)
+        guard (status == kCVReturnSuccess) else {
+            return nil
+        }
+        
+
+        let bytesPerRow = cgImage.bytesPerRow
+        let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: (CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue))
+  
+        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+        let context = CGContext(data: pixelData, width: width, height: height, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+
+        context!.draw(cgImage, in: CGRect.init(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
+        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+//        guard let dstImage = context?.makeImage() else { return nil }
+        return pixelBuffer!;
     }
     
     
@@ -67,7 +97,7 @@ class PixelbufferUtil {
         let region = MTLRegionMake2D(0, 0, texture.width, texture.height)
         texture.getBytes(&src, bytesPerRow: bytesPerRow, from: region, mipmapLevel: 0)
         
-        let bitmapInfo = CGBitmapInfo(rawValue: (CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue))
+        let bitmapInfo = CGBitmapInfo(rawValue: (CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue))
         let bitsPerComponent = 8
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let context = CGContext(data: &src, width: texture.width, height: texture.height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)

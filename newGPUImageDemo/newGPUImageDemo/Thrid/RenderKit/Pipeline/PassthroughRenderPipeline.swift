@@ -20,7 +20,7 @@ open class PassthroughRenderPipeline {
 
     
     func render(commandBuffer: MTLCommandBuffer) {
-        let renderPass = obtainRenderPassDescriptor()
+        let renderPass = obtainRenderPassDescriptor(output: output!)
         guard let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else {
             fatalError("Could not create render encoder")
         }
@@ -41,12 +41,4 @@ open class PassthroughRenderPipeline {
     }
     
     
-    func obtainRenderPassDescriptor() -> MTLRenderPassDescriptor {
-        let renderPass = MTLRenderPassDescriptor()
-        renderPass.colorAttachments[0].texture = output
-        renderPass.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 0)
-        renderPass.colorAttachments[0].storeAction = .store
-        renderPass.colorAttachments[0].loadAction = .clear
-        return renderPass
-    }
 }
