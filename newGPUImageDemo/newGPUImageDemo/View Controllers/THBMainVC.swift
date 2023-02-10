@@ -76,8 +76,8 @@ class THBMainVC: UIViewController {
 //        pass.render(commandBuffer: commandbuffer)
         
         
-        let pass2 = ZoomBlurRenderPipeline()
-        pass2.input = texture
+        let pass2 = MotionBlurRenderPipeline()
+        pass2.input = dsttexture
         pass2.output = dsttexture2
         pass2.render(commandBuffer: commandbuffer)
         
@@ -87,7 +87,8 @@ class THBMainVC: UIViewController {
         let image1 = PixelbufferUtil.image(from: dsttexture!)
         let image2 = PixelbufferUtil.image(from: dsttexture2!)
 
-        let a = 0;    }
+        let a = 0;
+    }
 
     
     
