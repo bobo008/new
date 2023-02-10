@@ -20,53 +20,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5ADFD8DB-0D24-458F-8349-0F321BE719E5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "newGPUImageDemo/Thrid/RenderKit/Pipeline/ZoomBlurRenderPipeline.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "init()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5ADFD8DB-0D24-458F-8349-0F321BE719E5 - 143db8d04727b502"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "newGPUImageDemo.ZoomBlurRenderPipeline.init() -&gt; newGPUImageDemo.ZoomBlurRenderPipeline"
-                  moduleName = "newGPUImageDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/narwal/Desktop/myself/newGPUImage/newGPUImageDemo/newGPUImageDemo/Thrid/RenderKit/Pipeline/ZoomBlurRenderPipeline.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "480">
-               </Location>
-               <Location
-                  uuid = "5ADFD8DB-0D24-458F-8349-0F321BE719E5 - cd4aead5174613cb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in newGPUImageDemo.ZoomBlurRenderPipeline.init() -&gt; newGPUImageDemo.ZoomBlurRenderPipeline"
-                  moduleName = "newGPUImageDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/narwal/Desktop/myself/newGPUImage/newGPUImageDemo/newGPUImageDemo/Thrid/RenderKit/Pipeline/ZoomBlurRenderPipeline.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

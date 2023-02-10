@@ -40,7 +40,7 @@ class THBMainVC: UIViewController {
     
     func render() {
         let textureLoader = MTKTextureLoader(device: sharedMetalRenderingDevice.device)
-        guard let path = Bundle.main.path(forResource: "comics_22.png", ofType: nil) else { return  }
+        guard let path = Bundle.main.path(forResource: "WID-small.jpg", ofType: nil) else { return  }
         let image = UIImage(contentsOfFile: path)
         let texture = try! textureLoader.newTexture(cgImage:image!.cgImage!, options: [MTKTextureLoader.Option.SRGB : false])
         
@@ -76,8 +76,8 @@ class THBMainVC: UIViewController {
 //        pass.render(commandBuffer: commandbuffer)
         
         
-        let pass2 = MotionBlurRenderPipeline()
-        pass2.input = dsttexture
+        let pass2 = VignetteRenderPipeline()
+        pass2.input = texture
         pass2.output = dsttexture2
         pass2.render(commandBuffer: commandbuffer)
         

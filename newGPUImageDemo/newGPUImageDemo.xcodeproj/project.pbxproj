@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		54171A6F29965BAD00D190A0 /* MotionBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 54171A6D29965BAD00D190A0 /* MotionBlur.metal */; };
 		54171A7029965BAD00D190A0 /* MotionBlurRenderPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54171A6E29965BAD00D190A0 /* MotionBlurRenderPipeline.swift */; };
+		54171A7429966E4B00D190A0 /* VignetteRenderPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54171A7229966E4B00D190A0 /* VignetteRenderPipeline.swift */; };
+		54171A7529966E4B00D190A0 /* Vignette.metal in Sources */ = {isa = PBXBuildFile; fileRef = 54171A7329966E4B00D190A0 /* Vignette.metal */; };
+		54171A782996700100D190A0 /* WID-small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54171A772996700100D190A0 /* WID-small.jpg */; };
 		5444E9262995137900B7DDE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5444E9252995137900B7DDE7 /* AppDelegate.swift */; };
 		5444E92F2995137A00B7DDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5444E92E2995137A00B7DDE7 /* Assets.xcassets */; };
 		5444E9322995137A00B7DDE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5444E9302995137A00B7DDE7 /* LaunchScreen.storyboard */; };
@@ -59,6 +62,9 @@
 /* Begin PBXFileReference section */
 		54171A6D29965BAD00D190A0 /* MotionBlur.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = MotionBlur.metal; sourceTree = "<group>"; };
 		54171A6E29965BAD00D190A0 /* MotionBlurRenderPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionBlurRenderPipeline.swift; sourceTree = "<group>"; };
+		54171A7229966E4B00D190A0 /* VignetteRenderPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VignetteRenderPipeline.swift; sourceTree = "<group>"; };
+		54171A7329966E4B00D190A0 /* Vignette.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Vignette.metal; sourceTree = "<group>"; };
+		54171A772996700100D190A0 /* WID-small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WID-small.jpg"; sourceTree = "<group>"; };
 		5444E9222995137900B7DDE7 /* newGPUImageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newGPUImageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5444E9252995137900B7DDE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5444E92E2995137A00B7DDE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,6 +135,35 @@
 			name = MotionBLur;
 			sourceTree = "<group>";
 		};
+		54171A7629966E5200D190A0 /* Vignette */ = {
+			isa = PBXGroup;
+			children = (
+				54171A7329966E4B00D190A0 /* Vignette.metal */,
+				54171A7229966E4B00D190A0 /* VignetteRenderPipeline.swift */,
+			);
+			name = Vignette;
+			sourceTree = "<group>";
+		};
+		54171A7A2996705800D190A0 /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				5444E98F2995162C00B7DDE7 /* PassthroughPipline */,
+				5444E99E299520FF00B7DDE7 /* ZoomBlur */,
+				54171A7129965BB000D190A0 /* MotionBLur */,
+				54171A7629966E5200D190A0 /* Vignette */,
+				5444E99729951BD500B7DDE7 /* NormalBlend */,
+			);
+			name = Render;
+			sourceTree = "<group>";
+		};
+		54171A7B2996706A00D190A0 /* Compute */ = {
+			isa = PBXGroup;
+			children = (
+				5444E987299513E300B7DDE7 /* ComputePiplline */,
+			);
+			name = Compute;
+			sourceTree = "<group>";
+		};
 		5444E9192995137900B7DDE7 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +223,7 @@
 		5444E95D299513B600B7DDE7 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				54171A772996700100D190A0 /* WID-small.jpg */,
 				5444E95E299513B600B7DDE7 /* comics_22.png */,
 			);
 			path = Res;
@@ -216,11 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				5444E9912995164000B7DDE7 /* Header */,
-				5444E987299513E300B7DDE7 /* ComputePiplline */,
-				5444E98F2995162C00B7DDE7 /* PassthroughPipline */,
-				5444E99E299520FF00B7DDE7 /* ZoomBlur */,
-				54171A7129965BB000D190A0 /* MotionBLur */,
-				5444E99729951BD500B7DDE7 /* NormalBlend */,
+				54171A7B2996706A00D190A0 /* Compute */,
+				54171A7A2996705800D190A0 /* Render */,
 			);
 			path = Pipeline;
 			sourceTree = "<group>";
@@ -420,6 +453,7 @@
 			files = (
 				5444E9322995137A00B7DDE7 /* LaunchScreen.storyboard in Resources */,
 				5444E977299513B600B7DDE7 /* comics_22.png in Resources */,
+				54171A782996700100D190A0 /* WID-small.jpg in Resources */,
 				5444E92F2995137A00B7DDE7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,11 +496,13 @@
 				5444E99429951B1D00B7DDE7 /* NormalBlendRenderPipeline.swift in Sources */,
 				5444E99929951C6000B7DDE7 /* CommonVertex.metal in Sources */,
 				5444E980299513B600B7DDE7 /* Position.swift in Sources */,
+				54171A7529966E4B00D190A0 /* Vignette.metal in Sources */,
 				5444E97F299513B600B7DDE7 /* Matrix.swift in Sources */,
 				5444E981299513B600B7DDE7 /* AAPLMathUtilities.m in Sources */,
 				5444E97A299513B600B7DDE7 /* PassthroughRenderPipeline.swift in Sources */,
 				5444E979299513B600B7DDE7 /* Gray.metal in Sources */,
 				5444E985299513B600B7DDE7 /* TextureCache.swift in Sources */,
+				54171A7429966E4B00D190A0 /* VignetteRenderPipeline.swift in Sources */,
 				54171A7029965BAD00D190A0 /* MotionBlurRenderPipeline.swift in Sources */,
 				5444E978299513B600B7DDE7 /* GrayComputePipeline.swift in Sources */,
 			);
