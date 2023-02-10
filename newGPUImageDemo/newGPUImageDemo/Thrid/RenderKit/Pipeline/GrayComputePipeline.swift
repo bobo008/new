@@ -15,9 +15,9 @@ final class GrayComputePipeline {
     
     public init() {
         self.operationName = "grayscaleKernel"
-        let (pipelineState, lookupTable) = sharedMetalRenderingDevice.generateComputePipelineState(kernelFunctionName: "grayscaleKernel")
+        let (pipelineState, lookupTable, bufferSize) = sharedMetalRenderingDevice.generateComputePipelineState(kernelFunctionName: "grayscaleKernel")
         self.computePipelineState = pipelineState
-        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable)
+        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable, bufferSize:bufferSize)
     }
     
     

@@ -15,8 +15,8 @@ public class MetalRenderingDevice {
     public let commandQueue: MTLCommandQueue
     public let shaderLibrary: MTLLibrary
     
-    public var renderCache = [MTLRenderPipelineDescriptor: (MTLRenderPipelineState, [String:(Int, MTLDataType)])]()
-    public var computeCache = [MTLComputePipelineDescriptor: (MTLComputePipelineState, [String:(Int, MTLDataType)])]()
+    public var renderCache = [MTLRenderPipelineDescriptor: (MTLRenderPipelineState, [String:(Int, MTLStructMember)], Int)]()
+    public var computeCache = [MTLComputePipelineDescriptor: (MTLComputePipelineState, [String:(Int, MTLStructMember)], Int)]()
     public lazy var textureCache: TextureCache = { TextureCache() }()
 
     init() {
@@ -39,7 +39,7 @@ public class MetalRenderingDevice {
     
     
     
-    func generateComputePipelineState(kernelFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.rgba8Unorm) -> (MTLComputePipelineState, [String:(Int, MTLDataType)]) {
+    func generateComputePipelineState(kernelFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.rgba8Unorm) -> (MTLComputePipelineState, [String:(Int, MTLStructMember)], Int) {
         guard let kernelFunction = self.shaderLibrary.makeFunction(name: kernelFunctionName) else {
             fatalError("\(operationName): could not compile kernel function \(kernelFunctionName)")
         }
@@ -47,25 +47,29 @@ public class MetalRenderingDevice {
         let descriptor = MTLComputePipelineDescriptor()
         descriptor.computeFunction = kernelFunction
 
-        if let (pipelineState, uniformLookupTable) = computeCache[descriptor] {
-            return (pipelineState, uniformLookupTable)
+        if let (pipelineState, uniformLookupTable, size) = computeCache[descriptor] {
+            return (pipelineState, uniformLookupTable,size)
         } else {
             do {
+                
                 var reflection:MTLAutoreleasedComputePipelineReflection?
                 let pipelineState = try self.device.makeComputePipelineState(descriptor: descriptor, options: [.bufferTypeInfo, .argumentInfo], reflection: &reflection)
-                var uniformLookupTable:[String:(Int, MTLDataType)] = [:]
-                if let kernelArguments = reflection?.arguments {
-                    for kernelArgument in kernelArguments where kernelArgument.type == .buffer {
-                        if (kernelArgument.bufferDataType == .struct), let members = kernelArgument.bufferStructType?.members.enumerated() {
+
+                var uniformLookupTable:[String:(Int, MTLStructMember)] = [:]
+                var bufferSize: Int = 0
+                if let fragmentArguments = reflection?.arguments {
+                    for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
+                        if
+                          (fragmentArgument.bufferDataType == .struct),
+                          let members = fragmentArgument.bufferStructType?.members.enumerated() {
+                            bufferSize = fragmentArgument.bufferDataSize
                             for (index, uniform) in members {
-                                uniformLookupTable[uniform.name] = (index, uniform.dataType)
+                                uniformLookupTable[uniform.name] = (index, uniform)
                             }
                         }
                     }
                 }
-
-                computeCache[descriptor] = (pipelineState, uniformLookupTable)
-                return (pipelineState, uniformLookupTable)
+                return (pipelineState, uniformLookupTable, bufferSize)
             } catch {
                 fatalError("Could not create compute pipeline state for kernel:\(kernelFunctionName), error:\(error)")
             }
@@ -73,7 +77,7 @@ public class MetalRenderingDevice {
         
     }
     
-    func generateRenderPipelineState(vertexFunctionName:String, fragmentFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.rgba8Unorm) -> (MTLRenderPipelineState, [String:(Int, MTLDataType)]) {
+    func generateRenderPipelineState(vertexFunctionName:String, fragmentFunctionName:String, operationName:String = "Off Screen Render", pixelFormat:MTLPixelFormat = MTLPixelFormat.rgba8Unorm) -> (MTLRenderPipelineState, [String:(Int, MTLStructMember)], Int) {
         guard let vertexFunction = self.shaderLibrary.makeFunction(name: vertexFunctionName) else {
             fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
         }
@@ -88,24 +92,29 @@ public class MetalRenderingDevice {
         descriptor.vertexFunction = vertexFunction
         descriptor.fragmentFunction = fragmentFunction
         
-        if let (pipelineState, uniformLookupTable) = renderCache[descriptor] {
-            return (pipelineState, uniformLookupTable)
+        if let (pipelineState, uniformLookupTable, size) = renderCache[descriptor] {
+            return (pipelineState, uniformLookupTable, size)
         } else {
             do {
                 var reflection:MTLAutoreleasedRenderPipelineReflection?
                 let pipelineState = try self.device.makeRenderPipelineState(descriptor: descriptor, options: [.bufferTypeInfo, .argumentInfo], reflection: &reflection)
-                var uniformLookupTable:[String:(Int, MTLDataType)] = [:]
+
+                var uniformLookupTable:[String:(Int, MTLStructMember)] = [:]
+                var bufferSize: Int = 0
                 if let fragmentArguments = reflection?.fragmentArguments {
                     for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
-                        if (fragmentArgument.bufferDataType == .struct), let members = fragmentArgument.bufferStructType?.members.enumerated() {
+                        if
+                          (fragmentArgument.bufferDataType == .struct),
+                          let members = fragmentArgument.bufferStructType?.members.enumerated() {
+                            bufferSize = fragmentArgument.bufferDataSize
                             for (index, uniform) in members {
-                                uniformLookupTable[uniform.name] = (index, uniform.dataType)
+                                uniformLookupTable[uniform.name] = (index, uniform)
                             }
                         }
                     }
                 }
-                renderCache[descriptor] = (pipelineState, uniformLookupTable)
-                return (pipelineState, uniformLookupTable)
+                
+                return (pipelineState, uniformLookupTable, bufferSize)
             } catch {
                 fatalError("Could not create render pipeline state for vertex:\(vertexFunctionName), fragment:\(fragmentFunctionName), error:\(error)")
             }

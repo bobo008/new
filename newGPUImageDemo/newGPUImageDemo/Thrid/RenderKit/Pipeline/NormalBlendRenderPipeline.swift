@@ -14,9 +14,9 @@ open class NormalBlendRenderPipeline {
 
     public init() {
         self.operationName = "NormalBlendRenderPipeline"
-        let (pipelineState, lookupTable) = sharedMetalRenderingDevice.generateRenderPipelineState(vertexFunctionName: "twoInputVertex", fragmentFunctionName: "normalBlendFragment")
+        let (pipelineState, lookupTable, size) = sharedMetalRenderingDevice.generateRenderPipelineState(vertexFunctionName: "twoInputVertex", fragmentFunctionName: "normalBlendFragment")
         self.renderPipelineState = pipelineState
-        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable)
+        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable, bufferSize: size)
     }
 
     

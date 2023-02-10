@@ -13,9 +13,9 @@ open class PassthroughRenderPipeline {
 
     public init() {
         self.operationName = "PassthroughRenderPipeline"
-        let (pipelineState, lookupTable) = sharedMetalRenderingDevice.generateRenderPipelineState(vertexFunctionName: "oneInputVertex", fragmentFunctionName: "passthroughFragment")
+        let (pipelineState, lookupTable, size) = sharedMetalRenderingDevice.generateRenderPipelineState(vertexFunctionName: "oneInputVertex", fragmentFunctionName: "passthroughFragment")
         self.renderPipelineState = pipelineState
-        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable)
+        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable, bufferSize: size)
     }
 
     

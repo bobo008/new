@@ -87,8 +87,7 @@ class THBMainVC: UIViewController {
         let image1 = PixelbufferUtil.image(from: dsttexture!)
         let image2 = PixelbufferUtil.image(from: dsttexture2!)
 
-        let a = 0;
-    }
+        let a = 0;    }
 
     
     

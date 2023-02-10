@@ -2,44 +2,40 @@ import Foundation
 import Metal
 
 public class ShaderUniformSettings {
-    private var uniformValues:[Float] = []
-    private var uniformValueOffsets:[Int] = []
+    let uniformLookupTable:[String:Int]
+    private var uniformValues:[Float]
+    private var uniformValueOffsets:[Int]
     public var colorUniformsUseAlpha:Bool = false
     let shaderUniformSettingsQueue = DispatchQueue(
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
-    let uniformLookupTable:[String:Int]
 
-    public init(uniformLookupTable:[String:(Int, MTLDataType)]) {
+    // 通过拿到struct的真实buffersize去解决字节对齐的问题
+    public init(uniformLookupTable:[String:(Int, MTLStructMember)], bufferSize:Int) {
         var convertedLookupTable:[String:Int] = [:]
         
-        var orderedDatatypes = [MTLDataType](repeating:.float, count:uniformLookupTable.count)
+        var orderedOffsets = [Int](repeating:0, count:uniformLookupTable.count)
         
-        for (key, value) in uniformLookupTable {
-            let (index, dataType) = value
+        for (key, uniform) in uniformLookupTable {
+            let (index, structMember) = uniform
             convertedLookupTable[key] = index
-            orderedDatatypes[index] = dataType
+            orderedOffsets[index] = structMember.offset/4
         }
         
         self.uniformLookupTable = convertedLookupTable
-
-        for dataType in orderedDatatypes {
-            self.appendBufferSpace(for:dataType)
-        }
+        self.uniformValues = [Float](repeating:0.0, count:bufferSize/4)
+        self.uniformValueOffsets = orderedOffsets
     }
     
     public var usesAspectRatio:Bool { get { return self.uniformLookupTable["aspectRatio"] != nil } }
     
     private func internalIndex(for index:Int) -> Int {
-        if (index == 0) {
-            return 0
-        } else {
-            return uniformValueOffsets[index - 1]
-        }
+        return uniformValueOffsets[index]
     }
     
-
+    // MARK: -
     // MARK: Subscript access
+    
     public subscript(key:String) -> Float {
         get {
             guard let index = uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
@@ -55,7 +51,7 @@ public class ShaderUniformSettings {
 
     public subscript(key:String) -> Color {
         get {
-            // 不可调用！
+            // TODO: Fix this
             return Color(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         }
         set(newValue) {
@@ -81,7 +77,7 @@ public class ShaderUniformSettings {
 
     public subscript(key:String) -> Position {
         get {
-            // 不可调用！
+            // TODO: Fix this
             return Position(0.0, 0.0)
         }
         set(newValue) {
@@ -99,7 +95,7 @@ public class ShaderUniformSettings {
 
     public subscript(key:String) -> Size {
         get {
-            // 不可调用！
+            // TODO: Fix this
             return Size(width:0.0, height:0.0)
         }
         set(newValue) {
@@ -117,7 +113,7 @@ public class ShaderUniformSettings {
 
     public subscript(key:String) -> Matrix3x3 {
         get {
-            // 不可调用！
+            // TODO: Fix this
             return Matrix3x3.identity
         }
         set(newValue) {
@@ -135,7 +131,7 @@ public class ShaderUniformSettings {
 
     public subscript(key:String) -> Matrix4x4 {
         get {
-            // 不可调用！
+            // TODO: Fix this
             return Matrix4x4.identity
         }
         set(newValue) {
@@ -151,54 +147,27 @@ public class ShaderUniformSettings {
         }
     }
     
-    
+    // MARK: -
     // MARK: Uniform buffer memory management
-    
-    func appendBufferSpace(for dataType:MTLDataType) {
-        let uniformSize:Int
-        switch dataType {
-            case .float: uniformSize = 1
-            case .float2: uniformSize = 2
-            case .float3: uniformSize = 4 // Hack to fix alignment issues
-            case .float4: uniformSize = 4
-            case .float3x3: uniformSize = 12
-            case .float4x4: uniformSize = 16
-            default: fatalError("Uniform data type of value: \(dataType.rawValue) not supported")
-        }
-        let blankValues = [Float](repeating:0.0, count:uniformSize)
-
-        let lastOffset = alignPackingForOffset(uniformSize:uniformSize, lastOffset:uniformValueOffsets.last ?? 0)
-        uniformValues.append(contentsOf:blankValues)
-        uniformValueOffsets.append(lastOffset + uniformSize)
-    }
-    
-    func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
-        let floatAlignment = (lastOffset + uniformSize) % 4
-        let previousFloatAlignment = lastOffset % 4
-        if (uniformSize > 1) && (floatAlignment != 0) && (previousFloatAlignment != 0){
-            let paddingToAlignment = 4 - floatAlignment
-            uniformValues.append(contentsOf:[Float](repeating:0.0, count:paddingToAlignment))
-            uniformValueOffsets[uniformValueOffsets.count - 1] = lastOffset + paddingToAlignment
-            return lastOffset + paddingToAlignment
-        } else {
-            return lastOffset
-        }
-    }
-    
 
     public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
         shaderUniformSettingsQueue.sync {
             guard (uniformValues.count > 0) else { return }
-            let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues, length: uniformValues.count * MemoryLayout<Float>.size, options: [])!
+            
+            let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
+                                                                             length: uniformValues.count * MemoryLayout<Float>.size,
+                                                                             options: [])!
             renderEncoder.setFragmentBuffer(uniformBuffer, offset: 0, index: 1)
         }
     }
     
-    
     public func restoreShaderSettings(computeEncoder:MTLComputeCommandEncoder) {
         shaderUniformSettingsQueue.sync {
             guard (uniformValues.count > 0) else { return }
-            let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues, length: uniformValues.count * MemoryLayout<Float>.size, options: [])!
+            
+            let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
+                                                                             length: uniformValues.count * MemoryLayout<Float>.size,
+                                                                             options: [])!
             computeEncoder.setBuffer(uniformBuffer, offset: 0, index: 1)
         }
     }
@@ -244,6 +213,7 @@ extension Matrix3x3:UniformConvertible {
     public func toFloatArray() -> [Float] {
         // Row major, with zero-padding
         return [m11, m12, m13, 0.0, m21, m22, m23, 0.0, m31, m32, m33, 0.0]
+//        return [m11, m12, m13, m21, m22, m23, m31, m32, m33]
     }
 }
 
@@ -251,6 +221,7 @@ extension Matrix4x4:UniformConvertible {
     public func toFloatArray() -> [Float] {
         // Row major
         return [m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44]
+//        return [m11, m21, m31, m41, m12, m22, m32, m42, m13, m23, m33, m43, m14, m24, m34, m44]
     }
 }
 
@@ -259,4 +230,5 @@ extension Size:UniformConvertible {
         return [self.width, self.height]
     }
 }
+
 

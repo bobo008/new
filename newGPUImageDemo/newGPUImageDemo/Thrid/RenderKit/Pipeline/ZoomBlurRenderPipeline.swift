@@ -31,9 +31,9 @@ open class ZoomBlurRenderPipeline {
 
     public init() {
         self.operationName = "ZoomBlurRenderPipeline"
-        let (pipelineState, lookupTable) = sharedMetalRenderingDevice.generateRenderPipelineState(vertexFunctionName: "oneInputVertex", fragmentFunctionName: "zoomBlurFragment")
+        let (pipelineState, lookupTable, size) = sharedMetalRenderingDevice.generateRenderPipelineState(vertexFunctionName: "oneInputVertex", fragmentFunctionName: "zoomBlurFragment")
         self.renderPipelineState = pipelineState
-        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable)
+        self.uniformSettings = ShaderUniformSettings(uniformLookupTable:lookupTable, bufferSize: size)
         
         ({blurSize = 1.0})()
         ({blurCenter = Position.center})()
